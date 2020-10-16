@@ -1,0 +1,27 @@
+[
+  {
+    "title": "BUY BREAD",
+    "id": 1,
+    "completed": false
+  },
+  {
+    "title": "BUY MILK",
+    "id": 2,
+    "completed": false
+  },
+  {
+    "title": "BUY TOMATO",
+    "id": 3,
+    "completed": false
+  },
+  {
+    "title": "READ BOOK",
+    "id": 4,
+    "completed": false
+  },
+  {
+    "title": "READ NEWS",
+    "id": 5,
+    "completed": false
+  }
+]
