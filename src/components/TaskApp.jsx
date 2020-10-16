@@ -11,6 +11,7 @@ class TaskApp extends Component {
       newTaskName: "",
       todos: [],
       error: false,
+      toggle: false,
     };
   }
 
@@ -18,6 +19,18 @@ class TaskApp extends Component {
     this.setState({
       newTaskName: e.target.value,
     });
+  };
+
+  onToggle = () => {
+    this.setState({
+      toggle: !this.state.toggle,
+    });
+  };
+
+  onDelete = (id) => {
+    const { todos } = this.state;
+    let newData = todos.filter((item) => item.id !== id);
+    this.setState({ todos: newData });
   };
 
   onSubmit = (e) => {
@@ -48,13 +61,16 @@ class TaskApp extends Component {
 
   componentDidMount() {
     loadData()
-    .then(({data}) =>
-    this.setState({
-        todos: data
-    }))
-    .catch(err => this.setState({
-        error: true,
-    }))
+      .then(({ data }) =>
+        this.setState({
+          todos: data,
+        })
+      )
+      .catch((err) =>
+        this.setState({
+          error: true,
+        })
+      );
   }
 
   render() {
@@ -75,7 +91,12 @@ class TaskApp extends Component {
             />
           </header>
           <section className="mt-2">
-            <TaskList todos={this.state.todos} />
+            <TaskList
+              todos={this.state.todos}
+              onToggle={this.onToggle}
+              toggle={this.state.toggle}
+              onDelete={this.onDelete}
+            />
           </section>
         </div>
       </Router>
